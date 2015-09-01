@@ -1,0 +1,20 @@
+{
+  "name": "manage-process",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fernan256/monitoreo.git"
+  },
+  "author": "Diego Mayorga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernan256/monitoreo/issues"
+  },
+  "homepage": "https://github.com/fernan256/monitoreo"
+}
