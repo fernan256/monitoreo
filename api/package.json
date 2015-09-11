@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/fernan256/monitoreo/issues"
   },
-  "homepage": "https://github.com/fernan256/monitoreo"
+  "homepage": "https://github.com/fernan256/monitoreo",
+  "dependencies": {
+    "hapi": "^9.1.0",
+    "node-shell-parser": "^0.2.1"
+  }
 }
