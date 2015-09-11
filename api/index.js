@@ -16,30 +16,11 @@ server.route({
     path: '/process',
     handler: function (request, reply) {
 			
-
-			//function puts(error, stdout, stderr) { sys.puts(stdout) }
-			//exec("ls -la", puts);
-			//function execute (command, callback) {
-			//	exec(command, function(error, stdout, stderr){ callback(stdout); });
-				child = exec("ps faxu", function (error, stdout, stderr) {
+			child = exec("ps faxu", function (error, stdout, stderr) {
 				var result = shellParser(stdout);
 				reply(result);
-  		//	sys.print('stdout: ' + stdout);
-  		//	sys.print('stderr: ' + stderr);
-  				//if (error !== null) {
-					//	console.log('exec error: ' + error);
-					//}
-				});	
-			//}
-			
-		
 
-//child.kill("SIGKILL")
-
-			//execFile("ls", ["-lF", "/usr"], null, function (err, stdout, stderr) {
-  		//	console.log("execFileSTDOUT:", JSON.stringify(stdout))
-  		//	console.log("execFileSTDERR:", JSON.stringify(stderr))
-			//})
+			});
     }
 });
 
@@ -49,14 +30,24 @@ server.route({
     handler: function (request, reply) {
 
 			console.log(request.params);
+			process.on('SIGHUP', function() {
+  			console.log('Got SIGHUP signal.');
+			});
+
+			setTimeout(function() {
+  			console.log('Exiting.');
+  			process.exit(0);
+			}, 100);
+
+			process.kill(process.pid, 'SIGHUP');
 		}
 });
 
 server.route({
     method: 'POST',
-    path: '/reprioritize/{pid}',
+    path: '/prioritize/{pid}',
     handler: function (request, reply) {
-
+			
 			console.log(request.params);
 	}
 });
